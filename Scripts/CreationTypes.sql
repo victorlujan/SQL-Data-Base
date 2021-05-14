@@ -105,7 +105,7 @@ RRES REF Resultado
 CREATE OR REPLACE TYPE Resultado_Temporada_tabla AS TABLE OF Resultado_Temporada;
 /
 CREATE OR REPLACE TYPE GranPremio AS OBJECT(
-nombre VARCHAR2(20),
+nombre VARCHAR2(66),
 fecha DATE,
 pais VARCHAR2(20),
 circuito_carrera REF Circuito,
