@@ -39,3 +39,10 @@ create or replace view informaciongrandespremios as(SELECT NOMBRE as nombre , DE
 (SELECT round(AVG(DEREF(RRES).TIEMPO),2)  FROM TABLE(ER)) as mediatiempo ,
 (SELECT MIN(DEREF(RRES).TIEMPO)  FROM TABLE (ER)) as menortiempo
  FROM GRANDESPREMIOS gr);
+
+ create or replace view historialpatrocinadores as ( select año, deref(t.rpatr).nombre as nombre,  
+ deref(t.rpatr).inversion as inversion, deref(t.resc).nombre as escuderia from temporada_tabla c , table(c.relpatresc) t );
+
+CREATE OR REPLACE  VIEW PUNTOSPILOTO AS(SELECT NOMBRE "NOMBRE" , (T.RTEMP).año as "año", DEREF(DEREF(T.RRES).PILOTO_RESUL).NOMBRE AS PILOTO,
+PUNTOS(DEREF(DEREF(T.RRES).PILOTO_RESUL).NOMBRE,NOMBRE,(T.RTEMP).AÑO) as "puntos"
+FROM GRANPREMIO_TABLA X , TABLE(X.ER)T );
