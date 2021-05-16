@@ -68,7 +68,7 @@ BEGIN
                 DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------');
                 
                 FOR VRESUL IN (SELECT * FROM RESULTADO_TABLA WHERE PILOTO_RESUL = TPILOTO(I)) LOOP
-               select t.nombre, deref(nt.rres).id, deref(nt.rtemp).año into NOMBREGRANPREMIO  ,idnum ,temporada from grandespremios t , table(t.er) nt where deref(nt.rres).id = vresul.id;
+               select t.nombre, deref(nt.rres).id, deref(nt.rtemp).año into NOMBREGRANPREMIO  ,idnum ,temporada from granpremio_tabla t , table(t.er) nt where deref(nt.rres).id = vresul.id;
                      
                      DBMS_OUTPUT.PUT_LINE( 'Resultado ID ' || VRESUL.ID || ' - '|| NOMBREGRANPREMIO  ||'  // TIEMPO: '|| VRESUL.TIEMPO ||' MIN' || ' // TEMPORADA:' || temporada);
                 END LOOP;
@@ -179,64 +179,6 @@ BEGIN
             END LOOP;
             
          END IF;         
-END;
-/
-create or replace FUNCTION PUNTOS (NOMBREPILOTO IN PILOTO_TABLA.NOMBRE%TYPE, GRANPREMIO IN GRANPREMIO_TABLA.NOMBRE%TYPE, TEMPORADA IN TEMPORADA_TABLA.AÑO%TYPE )
-RETURN VARCHAR2
-IS
-       TYPE RESUL_TAB IS TABLE OF REF RESULTADO;
-       TRESULTADO  RESUL_TAB;
-	   PUNTOS NUMBER(4);
-	   PILOTONOMBRE VARCHAR2(30);
-	   POSICIONUM NUMBER(3);
-       IDRESUL NUMBER(3);
-
-BEGIN
-		        SELECT REF(P) BULK COLLECT INTO TRESULTADO FROM RESULTADO_TABLA P, GRANPREMIO_TABLA G, TABLE(G.ER) ER WHERE DEREF(ER.RRES).ID  = P.ID and G.NOMBRE = GRANPREMIO AND DEREF(ER.RTEMP).AÑO = TEMPORADA ORDER BY DEREF(ER.RRES).TIEMPO;
-                POSICIONUM:=1;
-                PUNTOS :=0;
-                FOR I IN 1..TRESULTADO.COUNT LOOP
-                
-                    SELECT  DEREF(TRESULTADO(I)).ID INTO IDRESUL FROM DUAL;
-                    SELECT DEREF(PILOTO_RESUL).NOMBRE INTO PILOTONOMBRE FROM RESULTADO_TABLA F WHERE F.ID = IDRESUL;                    
-                    
-					IF PILOTONOMBRE = NOMBREPILOTO THEN
-                    
-						IF POSICIONUM = 1 THEN
-							PUNTOS:= 25;
-                            
-						ELSIF POSICIONUM = 2 THEN
-							PUNTOS:= 18;
-
-						ELSIF POSICIONUM = 3 THEN
-							PUNTOS:= 15;
-
-						ELSIF POSICIONUM = 4 THEN
-							PUNTOS:= 12;
-
-						ELSIF POSICIONUM = 5 THEN
-							PUNTOS:= 10;
-
-						ELSIF POSICIONUM = 6 THEN
-							PUNTOS:= 8;
-
-						ELSIF POSICIONUM = 7 THEN
-							PUNTOS:= 8;
-
-						ELSIF POSICIONUM = 8 THEN
-							PUNTOS:= 4;
-
-						ELSIF POSICIONUM = 9 THEN
-							PUNTOS:= 2;
-						END IF;
-                       
-
-					END IF;
-                    POSICIONUM:= POSICIONUM +1;
-
-                END LOOP;
-                
-                RETURN PUNTOS;
 END;
 /
 create or replace PROCEDURE MOSTRARPUNTOS (NOMBREPILOTO IN PILOTO_TABLA.NOMBRE%TYPE, GRANPREMIONOMBRE IN GRANPREMIO_TABLA.NOMBRE%TYPE, AÑOTEMPORADA IN TEMPORADA_TABLA.AÑO%TYPE)
