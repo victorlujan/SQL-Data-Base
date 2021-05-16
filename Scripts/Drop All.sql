@@ -80,6 +80,11 @@ drop view informacionescuderia;
 
 drop view informaciongrandespremios;
 
+drop view historialpatrocinadores;
+
+
+drop view puntospiloto;
+
 drop procedure REGISTRARRESULTADOS;
 
 drop procedure ESCUDERIAS;
@@ -89,3 +94,4 @@ DROP PROCEDURE MOSTRARPUNTOS;
 DROP PROCEDURE RESULTADOSGRANPREMIO;
 
 DROP FUNCTION PUNTOS;
+
