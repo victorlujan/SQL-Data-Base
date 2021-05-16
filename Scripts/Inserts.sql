@@ -92,25 +92,25 @@ insert into table(select RELPATRESC FROM Temporada_tabla where año=2020) VALUES
 insert into granpremio_tabla values('Gran Premio de España','12/02/2021','España',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='Barcelona'),Resultado_Temporada_tabla());
 insert into granpremio_tabla values('Monza','12/02/2021','Italia',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='Monza'),Resultado_Temporada_tabla());
 insert into granpremio_tabla values('Silverstone','12/02/2021','Reino Unido',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='Silverstone'),Resultado_Temporada_tabla());
-insert into granpremio_tabla values('Gran Prmio de Japon','12/02/2021','Japon',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='SUZUKA'),Resultado_Temporada_tabla());
+insert into granpremio_tabla values('Gran Premio de Japon','12/02/2021','Japon',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='SUZUKA'),Resultado_Temporada_tabla());
 insert into granpremio_tabla values('Gran Premio de Portugal','12/02/2021','Portugal',(SELECT REF(P)FROM Circuito_tabla P WHERE nombre='Algarve'),Resultado_Temporada_tabla());
 /
 begin
 REGISTRARRESULTADOS(2019,'Gran Premio de España', 'Lewis Hamilton','Mercedes-Benz',120);
 REGISTRARRESULTADOS(2019,'Monza', 'Lewis Hamilton','Mercedes-Benz',60);
-REGISTRARRESULTADOS(2019,'Gran Prmio de Japon', 'Lewis Hamilton','Mercedes-Benz',60);
+REGISTRARRESULTADOS(2019,'Gran Premio de Japon', 'Lewis Hamilton','Mercedes-Benz',60);
 REGISTRARRESULTADOS(2019,'Gran Premio de Portugal', 'Lewis Hamilton','Mercedes-Benz',80);
 REGISTRARRESULTADOS(2019,'Gran Premio de España', 'Valtteri Bottas','Mercedes-Benz',80);
 REGISTRARRESULTADOS(2019,'Monza', 'Valtteri Bottas','Mercedes-Benz',90);
-REGISTRARRESULTADOS(2019,'Gran Prmio de Japon', 'Valtteri Bottas','Mercedes-Benz',50);
+REGISTRARRESULTADOS(2019,'Gran Premio de Japon', 'Valtteri Bottas','Mercedes-Benz',50);
 REGISTRARRESULTADOS(2019,'Gran Premio de Portugal', 'Valtteri Bottas','Mercedes-Benz',120);
 
 REGISTRARRESULTADOS(2020,'Gran Premio de España', 'Lewis Hamilton','Mercedes-Benz',120);
 REGISTRARRESULTADOS(2020,'Monza', 'Lewis Hamilton','Mercedes-Benz',60);
-REGISTRARRESULTADOS(2020,'Gran Prmio de Japon', 'Lewis Hamilton','Mercedes-Benz',60);
+REGISTRARRESULTADOS(2020,'Gran Premio de Japon', 'Lewis Hamilton','Mercedes-Benz',60);
 REGISTRARRESULTADOS(2020,'Gran Premio de Portugal', 'Lewis Hamilton','Mercedes-Benz',80);
 REGISTRARRESULTADOS(2020,'Gran Premio de España', 'Valtteri Bottas','Mercedes-Benz',80);
 REGISTRARRESULTADOS(2020,'Monza', 'Valtteri Bottas','Mercedes-Benz',90);
-REGISTRARRESULTADOS(2020,'Gran Prmio de Japon', 'Valtteri Bottas','Mercedes-Benz',50);
+REGISTRARRESULTADOS(2020,'Gran Premio de Japon', 'Valtteri Bottas','Mercedes-Benz',50);
 REGISTRARRESULTADOS(2020,'Gran Premio de Portugal', 'Valtteri Bottas','Mercedes-Benz',120);
 end;
